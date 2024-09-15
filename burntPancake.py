@@ -1,6 +1,6 @@
 # FUNCTIONS
 def flip(state, num) -> int:
-    
+   	 
     lst = []
     lst.extend(state)
 
@@ -122,7 +122,8 @@ if inp != "e" and pans[9] == "b":
         searched.append(queue.pop(0))
         pans = queue[0]
 
-            
+elif inp != "e" and pans[9] == "a":
+	print(5)
     
 else:
     layer = int(input())
