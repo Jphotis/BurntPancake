@@ -2,6 +2,15 @@
 import sys
 
 
+class NodeReverse:
+	def __init__ (self,state,prev):
+		self.state = state
+		self.prev = prev
+
+
+
+
+
 
 # FUNCTIONS
 def flip(state, num) -> int:
@@ -122,15 +131,18 @@ test = ""
 
 # Select mode:
 if not manual and pans[9] == "b":
-    print("Normal Mode")
+	print("Normal Mode")
+	pans = pans[0:8]	
+	queue.append(pans[0:8])
     
-    while pans[0:8] != "1w2w3w4w":
-        for i in range(1,5):
-            test = flip(pans, i)
-            if test not in searched:
-                queue.append(test)
-        searched.append(queue.pop(0))
-        pans = queue[0]
+	while pans[0:8] != "1w2w3w4w":
+		for i in range(1,5):
+			test = flip(pans, i)
+			if test not in searched:
+				queue.append(test)
+		searched.append(queue.pop(0))
+		print(searched)
+		pans = queue[0]
 
 elif not manual and pans[9] == "a":
 	print(5)
@@ -154,8 +166,7 @@ else:
 if pans[0:8] == "1w2w3w4w":
     print("\n")
     print("COMPLETE")
-    print(len(queue))
-    print(len(searched))
+    print(pans)
 else:
     print("END")
     
