@@ -1,3 +1,8 @@
+# IMPORTS
+import sys
+
+
+
 # FUNCTIONS
 def flip(state, num) -> int:
    	 
@@ -100,7 +105,14 @@ def flip(state, num) -> int:
     return ret
         
         
-        
+# COMMANDLINE ARGUMENTS
+# Inputting any extra commandline arguments allows you to manually flip the pancakes.
+manual = bool(len(sys.argv) - 1)
+if manual:
+	print("Welcome to Experimental Mode!")
+	print("After inputting the initial string, input the number of pancakes you want to flip.")
+	print("\n") 
+
 # CODE  
 searched = []  
 queue = []
@@ -109,9 +121,7 @@ searched.append(pans)
 test = ""
 
 # Select mode:
-print("Select mode:")
-inp = str(input())
-if inp != "e" and pans[9] == "b":
+if not manual and pans[9] == "b":
     print("Normal Mode")
     
     while pans[0:8] != "1w2w3w4w":
@@ -122,7 +132,7 @@ if inp != "e" and pans[9] == "b":
         searched.append(queue.pop(0))
         pans = queue[0]
 
-elif inp != "e" and pans[9] == "a":
+elif not manual and pans[9] == "a":
 	print(5)
     
 else:
