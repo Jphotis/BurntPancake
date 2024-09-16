@@ -170,15 +170,24 @@ else:
 
 
 # POST SEARCH
+path = []
+
 if pans[0:8] == "1w2w3w4w":
 	print("\n")
 	print("COMPLETE")
 	print(node.state, node.meta)
+	#path.insert(0,node)
 	
-	sort = prevNode
+	
+	sort = node
 	while sort.prev:
 		sort = sort.prev
 		print(sort.state, sort.meta)
+		#path.insert(0,sort)
+
+	print("\n")
+	#for i in path:
+		#print(i.state)
 
 else:
 	print("END")
