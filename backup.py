@@ -3,10 +3,10 @@ import sys
 
 
 class NodeReverse:
-	def __init__ (self,state,meta,prev):
+	def __init__ (self,state,prev,meta):
 		self.state = state
-		self.meta = meta
 		self.prev = prev
+		self.meta = meta
 
 
 
@@ -127,29 +127,23 @@ if manual:
 searched = []  
 queue = []
 pans = str(input())
-
-node = NodeReverse(pans,None,None)
 searched.append(pans)
-test = None
-prevNode = node
+test = ""
 
 # Select mode:
 if not manual and pans[9] == "b":
 	print("Normal Mode")
 	pans = pans[0:8]	
-	queue.append(node)
- 
+	queue.append(pans[0:8])
+    
 	while pans[0:8] != "1w2w3w4w":
 		for i in range(1,5):
 			test = flip(pans, i)
-			node = NodeReverse(test,i,prevNode)
-			if pans not in searched:
-				queue.append(node)
-		searched.append(queue.pop(0).state)
-		print(queue)
+			if test not in searched:
+				queue.append(test)
+		searched.append(queue.pop(0))
 		print(searched)
-		pans = queue[0].state
-		prevNode = queue[0]
+		pans = queue[0]
 
 elif not manual and pans[9] == "a":
 	print(5)
@@ -171,17 +165,11 @@ else:
 
 # POST SEARCH
 if pans[0:8] == "1w2w3w4w":
-	print("\n")
-	print("COMPLETE")
-	print(pans)
-	
-	sort = prevNode 
-	while sort.prev:
-		sort = sort.prev
-		print(sort.state, sort.meta)
-
+    print("\n")
+    print("COMPLETE")
+    print(pans)
 else:
-	print("END")
+    print("END")
     
     
 
