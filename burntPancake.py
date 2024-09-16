@@ -150,7 +150,7 @@ if not manual and pans[9] == "b":
 		print(searched)
 		pans = queue[0].state
 		prevNode = queue[0]
-
+	
 elif not manual and pans[9] == "a":
 	print(5)
     
@@ -173,9 +173,9 @@ else:
 if pans[0:8] == "1w2w3w4w":
 	print("\n")
 	print("COMPLETE")
-	print(pans)
+	print(node.state, node.meta)
 	
-	sort = prevNode 
+	sort = prevNode
 	while sort.prev:
 		sort = sort.prev
 		print(sort.state, sort.meta)
